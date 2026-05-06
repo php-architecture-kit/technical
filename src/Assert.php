@@ -25,7 +25,7 @@ final class Assert
             throw new InvalidArgumentException("Exception class must implement Throwable.");
         }
 
-        if (!class_exists($class)) {
+        if (!class_exists($class) && !interface_exists($class)) {
             throw new InvalidArgumentException("Class $class does not exist.");
         }
 
