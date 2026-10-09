@@ -21,12 +21,22 @@
         "source": "https://github.com/php-architecture-kit/technical"
     },
     "require": {
-        "php": "^7.4 || ^8.0"
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "*",
+        "phpstan/phpstan": "*"
     },
     "autoload": {
         "psr-4": {
             "PhpArchitecture\\Technical\\": "src/"
         }
+    },
+    "scripts": {
+        "code:fix": "vendor/bin/php-cs-fixer --config=tools/php-cs-fixer/php-cs-fixer.php fix",
+        "code:fix:dry": "vendor/bin/php-cs-fixer --config=tools/php-cs-fixer/php-cs-fixer.php check --diff",
+        "code:analyse": "vendor/bin/phpstan analyse src -c tools/phpstan/phpstan.neon",
+        "code:analyse:b": "vendor/bin/phpstan analyse src -c tools/phpstan/phpstan.neon --generate-baseline tools/phpstan/baseline.neon --allow-empty-baseline"
     },
     "extra": {
         "branch-alias": {
